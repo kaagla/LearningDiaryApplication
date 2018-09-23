@@ -1,0 +1,56 @@
+<!DOCTYPE HTML>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <meta charset="UTF-8" />
+        <title>Learning diary</title>
+    </head>
+    <body>
+        <header th:replace="fragments/navigation :: header"></header>
+        
+        <div align="center">
+        <h2>Create new user account:</h2>
+            <form method="POST" th:action="@{/registration}">
+                <table>
+                    <tbody>
+                        <tr>
+                            <td>Username: </td>
+                            <td><input type="text" name="username" id="reguser"/></td>
+                        </tr>
+                        <tr>
+                            <td>Password: </td>
+                            <td><input type="password" name="password" id="regpw"/></td>
+                        </tr>
+                        <tr>
+                            <td><input type="submit" value="Create new user" id="register"/></td>
+                            <td></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </form>
+        </div>
+        
+        <div align="center">
+        <h2>Already a user? Login:</h2>
+            <form method="POST" th:action="@{/login}">
+                <table>
+                    <tbody>
+                        <tr>
+                            <td>Username: </td>
+                            <td><input type="text" name="username" id="loguser"/></td>
+                        </tr>
+                        <tr>
+                            <td>Password: </td>
+                            <td><input type="password" name="password" id="logpw"/></td>
+                        </tr>
+                        <tr>
+                            <td><input type="submit" value="Login" id="login"/></td>
+                            <td></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </form>
+        </div>
+
+    </body>
+
+</html>

@@ -1,0 +1,31 @@
+<!DOCTYPE HTML>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <meta charset="UTF-8" />
+        <title>Entry</title>
+    </head>
+    <body>
+        <header th:replace="fragments/navigation :: header"></header>
+        <div align="center">
+        <h2>Edit entry:</h2>
+
+        
+            <form method="POST" th:action="@{/subjects/{id}/entries/{eid} (id=${subject.id}, eid=${entry.id})}" id="entryform">
+                <table>
+                    <tbody>
+                        <tr>
+                            <td>Title: </td>
+                            <td><input type="text" name="title" th:value="${entry.title}" id="title"/></td>
+                        </tr>
+                        <tr>
+                            <td>Date: </td>
+                            <td><input type="date" name="entrydate" th:value="${entry.entrydate}" id="date"/></td>
+                        </tr>
+                    </tbody>
+                </table>
+                <textarea rows="10" cols="50" name="textfield" form="entryform" wrap="hard" th:text="${entry.textfield}" id="textfield"></textarea>
+                <input type="submit" value="Edit" form="entryform" id="edit"/>
+            </form>
+        </div>
+    </body>
+</html>

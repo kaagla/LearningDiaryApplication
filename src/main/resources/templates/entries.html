@@ -1,0 +1,49 @@
+<!DOCTYPE HTML>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <meta charset="UTF-8" />
+        <title>Subject</title>
+    </head>
+    <body>
+        <header th:replace="fragments/navigation :: header"></header>
+        <div align="center">
+        <h2><span th:text="${subject.name}"></span></h2>
+        
+        <h2>Add new entry</h2>
+        
+        
+            <form method="POST" th:action="@{/subjects/{id}/entries (id=${subject.id})}" id="entryform">
+                <table>
+                    <tbody>
+                        <tr>
+                            <td>Title: </td>
+                            <td><input type="text" name="title" id="title"/></td>
+                        </tr>
+                        <tr>
+                            <td>Date: </td>
+                            <td><input type="date" name="entrydate" id="date"/></td>
+                        </tr>
+                    </tbody>
+                </table>
+                <textarea rows="10" cols="50" name="textfield" form="entryform" wrap="hard" id="textfield">Enter text here...</textarea>
+                <input type="submit" value="Add" form="entryform" id="add"/>
+            </form>
+                
+        
+        
+        <h2>Previous entries:</h2>
+        
+        <section th:each="entry : ${entries}">
+            <h3><span th:text="${entry.title}"></span></h3>
+            <pre th:text="${entry.textfield}"></pre>
+            <p><span th:text="${entry.entrydate}"></span></p>
+            <form th:action="@{/subjects/{id}/entries/{eid} (id=${subject.id}, eid=${entry.id})}" th:method="GET">
+                <input type="submit" value="Edit" id="edit"/>
+            </form>
+            <form th:action="@{/subjects/{id}/entries/{eid} (id=${subject.id}, eid=${entry.id})}" th:method="DELETE">
+                <input type="submit" value="Delete" id="delete"/>
+            </form>
+        </section>
+        </div>
+    </body>
+</html>

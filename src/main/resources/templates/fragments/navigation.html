@@ -1,0 +1,17 @@
+<!DOCTYPE HTML>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <meta charset="UTF-8" />
+        <title>Navigation template</title>
+    </head>
+    <body>
+        <header th:fragment="navigation">
+            <div align="center">
+                <h2>Learning Diary application</h2>            
+                <a th:href="@{/login}">Login</a>
+                <a th:href="@{/logout}">Logout</a>
+                <a th:href="@{/subjects}">Subjects</a>
+            </div>
+        </header>
+    </body>
+</html>
