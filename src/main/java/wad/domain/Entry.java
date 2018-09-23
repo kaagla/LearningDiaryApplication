@@ -24,7 +24,6 @@ public class Entry extends AbstractPersistable<Long> {
     @NotEmpty
     private String textfield;
     
-    @NotEmpty
     private LocalDate entrydate;
     
     @ManyToOne
