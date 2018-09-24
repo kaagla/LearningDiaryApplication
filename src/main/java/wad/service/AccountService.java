@@ -32,7 +32,7 @@ public class AccountService {
     private AccountRepository accountRepository;
     
     @Autowired
-    private PasswordEncoder pwEncoder;
+    private PasswordEncoder passwordEncoder;
     
     @Autowired
     private HttpServletRequest hsr;
@@ -48,7 +48,7 @@ public class AccountService {
         if (!accountRepository.findAll().contains(accountRepository.findByUsername(username))) {
             Account a = new Account();
             a.setUsername(username);
-            a.setPassword(pwEncoder.encode(password));
+            a.setPassword(passwordEncoder.encode(password));
             accountRepository.save(a);
         }
     }
