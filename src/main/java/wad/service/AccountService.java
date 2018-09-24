@@ -8,7 +8,7 @@ import wad.repository.AccountRepository;
 import wad.domain.Account;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
-import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
 @Service
 public class AccountService {
@@ -31,8 +31,6 @@ public class AccountService {
     @Autowired
     private AccountRepository accountRepository;
     
-    @Autowired
-    private PasswordEncoder passwordEncoder;
     
     @Autowired
     private HttpServletRequest hsr;
@@ -48,7 +46,8 @@ public class AccountService {
         if (!accountRepository.findAll().contains(accountRepository.findByUsername(username))) {
             Account a = new Account();
             a.setUsername(username);
-            a.setPassword(passwordEncoder.encode(password));
+            BCryptPasswordEncoder pwe = new BCryptPasswordEncoder();
+            a.setPassword(pwe.encode(password));
             accountRepository.save(a);
         }
     }
