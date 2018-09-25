@@ -5,3 +5,4 @@ deploy:
   secure: $HEROKU_API_KEY
  app:
   master: learning-diary-app-staging
+  production: learning-diary-app-production
