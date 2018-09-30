@@ -21,6 +21,9 @@ public class AccountController {
         login()
         - Login the user with given username and password. If login
           failes, redirect to index.
+    
+        logout()
+        - Log out from the application and redirect to index.
     */
     
     @Autowired

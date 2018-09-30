@@ -29,34 +29,39 @@ public class EntryService {
     @Autowired
     private SubjectRepository subjectRepository;
     
+    @Transactional
     public void add(Long id, String title, LocalDate entrydate, String textfield) {
         
-        Entry e = new Entry();
-        Subject s = subjectRepository.getOne(id);
+        if (!title.trim().equals("") && !textfield.trim().equals("")) {
+            Entry e = new Entry();
+            Subject s = subjectRepository.getOne(id);
 
-        e.setTitle(title);
-        e.setTextfield(textfield);
-        if (entrydate == null) {
-            e.setEntrydate(LocalDate.now());
-        } else {
-            e.setEntrydate(entrydate);
-        }
-        e.setEntrysubject(s);
-        entryRepository.save(e);
+            e.setTitle(title);
+            e.setTextfield(textfield);
+            if (entrydate == null) {
+                e.setEntrydate(LocalDate.now());
+            } else {
+                e.setEntrydate(entrydate);
+            }
+            e.setEntrysubject(s);
+            entryRepository.save(e);
         
-        List<Entry> el = s.getEntries();
-        el.add(e);
-        s.setEntries(el);
-        subjectRepository.save(s);
+            List<Entry> el = s.getEntries();
+            el.add(e);
+            s.setEntries(el);
+            subjectRepository.save(s);
+        }
     }
     
     public void edit(Long eid, String title, LocalDate entrydate, String textfield) {
         
-        Entry e = entryRepository.getOne(eid);
-        e.setTitle(title);
-        e.setTextfield(textfield);
-        e.setEntrydate(entrydate);
-        entryRepository.save(e);
+        if (!title.trim().equals("") && !textfield.trim().equals("")) {
+            Entry e = entryRepository.getOne(eid);
+            e.setTitle(title);
+            e.setTextfield(textfield);
+            e.setEntrydate(entrydate);
+            entryRepository.save(e);
+        }
     }
     
     @Transactional

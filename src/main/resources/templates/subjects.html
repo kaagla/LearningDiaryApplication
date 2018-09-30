@@ -12,17 +12,17 @@
             <table th:each="subject : ${subjects}">
                 <tbody>
                     <tr>
-                        <td>
+                        <td style="width:200px">
                             <a th:href="@{/subjects/{id}/entries (id=${subject.id})}">
                                 <h3 th:text="${subject.name}" id="subentries"></h3>
                             </a>
                         </td>
-                        <td>
+                        <td style="width:50px">
                             <form th:action="@{/subjects/{id}(id=${subject.id})}" th:method="GET">
                                 <input type="submit" value="Edit" id="edit"/>
                             </form>
                         </td>
-                        <td>
+                        <td style="width:50px">
                             <form th:action="@{/subjects/{id}(id=${subject.id})}" th:method="DELETE">
                                 <input type="submit" value="Delete" id="delete"/>
                             </form>
