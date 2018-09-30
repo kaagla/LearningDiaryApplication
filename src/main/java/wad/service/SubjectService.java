@@ -31,6 +31,7 @@ public class SubjectService {
     @Autowired
     private AccountService accountService;
     
+    @Transactional
     public void add(String name, Account account) {
         if (!name.trim().equals("")) {
             Subject s = new Subject();

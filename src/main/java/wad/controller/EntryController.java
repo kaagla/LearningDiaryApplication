@@ -17,6 +17,12 @@ import wad.service.AccountService;
 
 @Controller
 public class EntryController {
+    /*
+        Handle GET, POST and DELETE requests for Entries:
+    
+        - Account is verified, so that it can access only its own content.
+        - EntryService class is used in create, edit and delete.
+    */
     
     @Autowired
     private SubjectRepository subjectRepository;
